@@ -2,15 +2,15 @@
     "private": false,
     "type": "module",
     "license": "ISC",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "@termehui/utils",
     "description": "Utility functions",
     "main": "./dist/utils.umd.js",
-    "module": "./dist/utils.js",
+    "module": "./dist/utils.es.js",
     "types": "./dist/utils.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/utils.js",
+            "import": "./dist/utils.es.js",
             "require": "./dist/utils.umd.cjs"
         }
     },

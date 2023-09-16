@@ -2,7 +2,7 @@
     "private": false,
     "type": "module",
     "license": "ISC",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "name": "@termehui/utils",
     "description": "Utility functions",
     "main": "./dist/utils.umd.js",
@@ -10,8 +10,14 @@
     "types": "./dist/utils.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/utils.es.js",
-            "require": "./dist/utils.umd.cjs"
+            "import": {
+                "types": "./dist/utils.d.ts",
+                "default": "./dist/utils.es.js"
+            },
+            "require": {
+                "types": "./dist/utils.d.ts",
+                "default": "./dist/utils.umd.js"
+            }
         }
     },
     "files": [
@@ -35,8 +41,7 @@
         "url": "https://github.com/termehui/utils"
     },
     "scripts": {
-        "build:types": "tsc --project tsconfig.types.json --declaration --emitDeclarationOnly --outDir dist",
-        "build": "vite build && npm run build:types",
+        "build": "vite build",
         "prepare": "npm run build",
         "test": "vitest"
     },
@@ -44,6 +49,7 @@
         "@types/node": "^20.6.1",
         "typescript": "^5.2.2",
         "vite": "^4.4.9",
+        "vite-plugin-dts": "^3.5.3",
         "vitest": "^0.34.4"
     }
 }

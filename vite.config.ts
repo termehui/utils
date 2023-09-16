@@ -1,5 +1,6 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
+import dts from "vite-plugin-dts";
 
 /// <reference types="vitest" />
 // Configure Vitest (https://vitest.dev/config/)
@@ -14,4 +15,5 @@ export default defineConfig({
             fileName: (format) => `utils.${format}.js`,
         },
     },
+    plugins: [dts({ rollupTypes: true })],
 });

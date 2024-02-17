@@ -100,3 +100,24 @@ Convert value to string. if falsy value passed this function returns empty strin
 ### joiner
 
 Concatenate non-falsy value with space.
+
+## Colors
+
+Helper class to generate colors for svg shape and chart.
+
+```ts
+import { ColorSpace } from "@termehui/utils";
+
+enum Color {
+  Primary, Red
+}
+
+const colors  = new ColorSpace<Color>();
+colors.AddColor(Color.Primary, "red", "orange", 255, 10, 0);
+
+const red = colors.color(Color.Primary);
+const alpha = colors.alpha(Color.Primary, 0.5);
+const linearAlphaBG = colors.linearAlpha(Color.Primary, svgContext, svgArea);
+const linearBG = colors.linear(Color.Primary, svgContext, svgArea);
+const radialBG = colors.radial(Color.Primary, svgContext, svgArea);
+```

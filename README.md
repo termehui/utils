@@ -109,13 +109,15 @@ Helper class to generate colors for svg shape and chart.
 import { ColorSpace } from "@termehui/utils";
 
 enum Color {
-  Primary, Red
+  Primary,
+  Red,
 }
 
-const colors  = new ColorSpace<Color>();
+const colors = new ColorSpace<Color>();
 colors.AddColor(Color.Primary, "red", "orange", 255, 10, 0);
 
 const red = colors.color(Color.Primary);
+const palette = colors.all();
 const alpha = colors.alpha(Color.Primary, 0.5);
 const linearAlphaBG = colors.linearAlpha(Color.Primary, svgContext, svgArea);
 const linearBG = colors.linear(Color.Primary, svgContext, svgArea);

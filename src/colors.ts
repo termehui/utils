@@ -20,8 +20,8 @@ export class ColorSpace<T> {
      * register new color in color space
      *
      * @param key color key
-     * @param base base color in hex
-     * @param light light color in hex
+     * @param base color in hex
+     * @param light light version of color in hex
      * @param r color red amount in rgb mode
      * @param g color green amount in rgb mode
      * @param b color blue amount in rgb mode
@@ -45,6 +45,18 @@ export class ColorSpace<T> {
     public color(key: T): string | undefined {
         const c = this.colors.get(key);
         return c ? c.base : undefined;
+    }
+
+    /**
+     * get array of registered colors
+     * @returns array of colors
+     */
+    public all(): string[] {
+        const res: string[] = [];
+        this.colors.forEach((i) => {
+            res.push(i.base);
+        });
+        return res;
     }
 
     /**

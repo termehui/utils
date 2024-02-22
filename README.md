@@ -121,5 +121,7 @@ const palette = colors.all();
 const alpha = colors.alpha(Color.Primary, 0.5);
 const linearAlphaBG = colors.linearAlpha(Color.Primary, svgContext, svgArea);
 const linearBG = colors.linear(Color.Primary, svgContext, svgArea);
+const linearIBG = colors.linearInverse(Color.Primary, svgContext, svgArea);
 const radialBG = colors.radial(Color.Primary, svgContext, svgArea);
+const radialIBG = colors.radialInverse(Color.Primary, svgContext, svgArea);
 ```

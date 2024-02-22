@@ -93,7 +93,7 @@ export class ColorSpace<T> {
     }
 
     /**
-     * generate two color top to bottom linear gradient from registered color
+     * generate two color top to bottom linear gradient from registered color (dark to light)
      *
      * @param key color key
      * @param ctx canvas context
@@ -114,7 +114,28 @@ export class ColorSpace<T> {
     }
 
     /**
-     * generate two color radial gradient from registered color
+     * generate two color top to bottom linear gradient from registered color (light to dark)
+     *
+     * @param key color key
+     * @param ctx canvas context
+     * @param area shape area
+     * @returns two color gradient
+     */
+    public linearInverse(key: T, ctx: any, area: any): any | undefined {
+        const c = this.colors.get(key);
+        if (c) {
+            let height = area.bottom - area.top;
+            height = height + height * 0.25;
+            const gradient = ctx.createLinearGradient(0, 0, 0, height);
+            gradient.addColorStop(0, c.base);
+            gradient.addColorStop(1, c.light);
+            return gradient;
+        }
+        return undefined;
+    }
+
+    /**
+     * generate two color radial gradient from registered color (dark to light)
      *
      * @param key color key
      * @param ctx canvas context
@@ -122,6 +143,28 @@ export class ColorSpace<T> {
      * @returns two color gradient
      */
     public radial(key: T, ctx: any, area: any): any | undefined {
+        const c = this.colors.get(key);
+        if (c) {
+            const x = (area.left + area.right) / 2;
+            const y = (area.bottom + area.top) / 2;
+            const radius = Math.min(x, y);
+            const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+            gradient.addColorStop(0, c.base);
+            gradient.addColorStop(1, c.light);
+            return gradient;
+        }
+        return undefined;
+    }
+
+    /**
+     * generate two color radial gradient from registered color (light to dark)
+     *
+     * @param key color key
+     * @param ctx canvas context
+     * @param area shape area
+     * @returns two color gradient
+     */
+    public radialInverse(key: T, ctx: any, area: any): any | undefined {
         const c = this.colors.get(key);
         if (c) {
             const x = (area.left + area.right) / 2;

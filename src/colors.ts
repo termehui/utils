@@ -106,8 +106,8 @@ export class ColorSpace<T> {
             let height = area.bottom - area.top;
             height = height + height * 0.25;
             const gradient = ctx.createLinearGradient(0, 0, 0, height);
-            gradient.addColorStop(0, c.base);
-            gradient.addColorStop(1, c.light);
+            gradient.addColorStop(0, c.light);
+            gradient.addColorStop(1, c.base);
             return gradient;
         }
         return undefined;

@@ -135,7 +135,7 @@ export class ColorSpace<T> {
     }
 
     /**
-     * generate two color radial gradient from registered color (dark to light)
+     * generate two color radial gradient from registered color (light to dark)
      *
      * @param key color key
      * @param ctx canvas context
@@ -149,15 +149,15 @@ export class ColorSpace<T> {
             const y = (area.bottom + area.top) / 2;
             const radius = Math.min(x, y);
             const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-            gradient.addColorStop(0, c.base);
-            gradient.addColorStop(1, c.light);
+            gradient.addColorStop(0, c.light);
+            gradient.addColorStop(1, c.base);
             return gradient;
         }
         return undefined;
     }
 
     /**
-     * generate two color radial gradient from registered color (light to dark)
+     * generate two color radial gradient from registered color (dark to light)
      *
      * @param key color key
      * @param ctx canvas context
@@ -171,8 +171,8 @@ export class ColorSpace<T> {
             const y = (area.bottom + area.top) / 2;
             const radius = Math.min(x, y);
             const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-            gradient.addColorStop(0, c.light);
-            gradient.addColorStop(1, c.base);
+            gradient.addColorStop(0, c.base);
+            gradient.addColorStop(1, c.light);
             return gradient;
         }
         return undefined;
